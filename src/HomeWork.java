@@ -47,10 +47,11 @@ import java.util.stream.Collectors;
 
 public class HomeWork {
     static Map<Integer, Map<String, String[]>> Generator = GeneratorExpertHomework.getData();
+
     public static void main(String[] args) {
         popular();
+        CarSpecialNumber();
     }
-
 
 
     public static void popular() {
@@ -102,4 +103,31 @@ public class HomeWork {
         String max = (String) maxEntry;
         return "Больше всего въехало с номерами " + max + ": " + wordMap.get(max) + " машины";
     }
+
+    public static void CarSpecialNumber() {
+        Pattern pattern = Pattern.compile("М\\d{3}АВ\\d{3}");
+        Set<String> count = new HashSet<>();
+        for (Map.Entry<Integer, Map<String, String[]>> integerMapEntry : Generator.entrySet()) {
+            String s[] = integerMapEntry.getValue().get("input");
+            for (int i = 0; i < s.length; i++) {
+                Matcher matcher = pattern.matcher(s[i]);
+                if (matcher.find()) {
+                    count.add(s[i]);
+                }
+            }
+        }
+        for (Map.Entry<Integer, Map<String, String[]>> integerMapEntry : Generator.entrySet()) {
+            String s[]=integerMapEntry.getValue().get("out");
+            for (int i = 0; i < s.length; i++) {
+                Matcher matcher=pattern.matcher(s[i]);
+                if (matcher.find()){
+                    count.add(s[i]);
+                }
+            }
+        }
+        System.out.println("Машин с уникальным регионом "+count.size());
+    }
 }
+
+
+
