@@ -47,19 +47,14 @@ import java.util.stream.Collectors;
 
 public class HomeWork {
     static Map<Integer, Map<String, String[]>> Generator = GeneratorExpertHomework.getData();
-
     public static void main(String[] args) {
         popular();
     }
 
 
-    public static Set<Integer> ListOfKeys() {
-        Set<Integer> listKeys = Generator.keySet();
-        return listKeys;
-    }
 
     public static void popular() {
-        Integer[] listToArray = ListOfKeys().toArray(new Integer[0]);
+        Integer[] listToArray = Generator.keySet().toArray(new Integer[0]);
         Map<Integer, Integer> list = new HashMap<>();
         for (int i = 0; i < listToArray.length; i++) {
             list.put(listToArray[i], (Generator.get(listToArray[i]).get("input")).length);
