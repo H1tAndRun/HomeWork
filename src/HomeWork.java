@@ -79,8 +79,6 @@ public class HomeWork {
             String[] CarNumber = Generator.get(x[i]).get("input");
             System.out.println(x[i] + " " + mostEntered(CarNumber));
         }
-
-
     }
 
     public static String mostEntered(String[] y) {
